@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const msgBuffer = new TextEncoder().encode(message);                    
         const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
         const hashArray = Array.from(new Uint8Array(hashBuffer));
-        const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        const hashHex = hashArray.map(b => ('00' + b.toString(16)).slice(-2)).join('');
         return hashHex;
     }
 
@@ -46,8 +46,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     btnSubmitLogin.addEventListener('click', async function() {
-        var userInp = document.getElementById('username').value;
-        var passInp = document.getElementById('password').value;
+        var userInp = document.getElementById('username').value.trim();
+        var passInp = document.getElementById('password').value.trim();
 
         var inputUserHash = await sha256(userInp);
         var inputPassHash = await sha256(passInp);
