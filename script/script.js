@@ -22,16 +22,8 @@ document.addEventListener('DOMContentLoaded', function() {
     var devPanel = document.getElementById('developer-panel');
     var btnLogout = document.getElementById('btn-logout');
 
-    async function sha256(message) {
-        const msgBuffer = new TextEncoder().encode(message);                    
-        const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
-        const hashArray = Array.from(new Uint8Array(hashBuffer));
-        const hashHex = hashArray.map(b => ('00' + b.toString(16)).slice(-2)).join('');
-        return hashHex;
-    }
-
-    const targetUserHash = "68c1cb27f7fef48be78f3032bc13d5069f168fbc5072049e2954a20b8be354aa";
-    const targetPassHash = "96dcb71c4c92d3f73ce02046ffcbe62816f1b13ec85cdfb4334360e736fe0685";
+    var targetUserEnc = "RGV2ZWxvcGVySEtCUFI=";
+    var targetPassEnc = "RGV2SEtCUFJ3ZWJzaXRl";
 
     btnLoginTrigger.addEventListener('click', function() {
         devModal.style.display = 'flex';
@@ -45,14 +37,14 @@ document.addEventListener('DOMContentLoaded', function() {
         if (e.target == devModal) { devModal.style.display = 'none'; }
     });
 
-    btnSubmitLogin.addEventListener('click', async function() {
+    btnSubmitLogin.addEventListener('click', function() {
         var userInp = document.getElementById('username').value.trim();
         var passInp = document.getElementById('password').value.trim();
 
-        var inputUserHash = await sha256(userInp);
-        var inputPassHash = await sha256(passInp);
+        var inputUserEnc = btoa(userInp);
+        var inputPassEnc = btoa(passInp);
 
-        if (inputUserHash === targetUserHash && inputPassHash === targetPassHash) {
+        if (inputUserEnc === targetUserEnc && inputPassEnc === targetPassEnc) {
             alert('Akses Pengembang Diterima! Fitur editing diaktifkan.');
             devModal.style.display = 'none';
             activateDeveloperMode();
