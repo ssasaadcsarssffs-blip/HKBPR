@@ -22,9 +22,6 @@ document.addEventListener('DOMContentLoaded', function() {
     var devPanel = document.getElementById('developer-panel');
     var btnLogout = document.getElementById('btn-logout');
 
-    var targetUserEnc = "RGV2ZWxvcGVySEtCUFI=";
-    var targetPassEnc = "RGV2SEtCUFJ3ZWJzaXRl";
-
     btnLoginTrigger.addEventListener('click', function() {
         devModal.style.display = 'flex';
     });
@@ -41,10 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var userInp = document.getElementById('username').value.trim();
         var passInp = document.getElementById('password').value.trim();
 
-        var inputUserEnc = btoa(userInp);
-        var inputPassEnc = btoa(passInp);
-
-        if (inputUserEnc === targetUserEnc && inputPassEnc === targetPassEnc) {
+        if (userInp === 'DeveloperHKBPR' && passInp === 'DevHKBPRwebsite') {
             alert('Akses Pengembang Diterima! Fitur editing diaktifkan.');
             devModal.style.display = 'none';
             activateDeveloperMode();
