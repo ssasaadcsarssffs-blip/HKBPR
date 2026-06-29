@@ -35,15 +35,21 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     btnSubmitLogin.addEventListener('click', function() {
-        var userInp = document.getElementById('username').value.trim();
-        var passInp = document.getElementById('password').value.trim();
+        var userInp = document.querySelector('#login-modal input[id="username"]').value.trim();
+        var passInp = document.querySelector('#login-modal input[id="password"]').value.trim();
+
+        alert(
+            "Membaca DOM Browser:\n" +
+            "Username = [" + userInp + "]\n" +
+            "Password = [" + passInp + "]"
+        );
 
         if (userInp === 'DeveloperHKBPR' && passInp === 'DevHKBPRwebsite') {
-            alert('Akses Pengembang Diterima! Fitur editing diaktifkan.');
+            alert('LOGIN BERHASIL! Panel kontrol diaktifkan.');
             devModal.style.display = 'none';
             activateDeveloperMode();
         } else {
-            alert('Username atau Password Pengembang Salah!');
+            alert('LOGIN GAGAL! Periksa kembali kesesuaian huruf kapital.');
         }
     });
 
