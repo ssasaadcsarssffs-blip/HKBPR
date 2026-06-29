@@ -16,6 +16,23 @@
         </div>
     </div>
 
+    <!-- Modal Login Developer -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>Login Developer</h3>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Masukkan username">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Masukkan password">
+            </div>
+            <button id="submit-login" class="btn-primary">Masuk</button>
+        </div>
+    </div>
+
     <header>
         <div class="header-container">
             <div class="logo-area">
@@ -31,6 +48,7 @@
                     <li><a href="#tentang">Tentang Kami</a></li>
                     <li><a href="#pengurus">Pelayan & Pengurus</a></li>
                     <li><a href="#kontak">Gabung Komunitas</a></li>
+                    <li><button id="btn-login-trigger" class="btn-dev-nav">Dev Login</button></li>
                 </ul>
             </nav>
         </div>
@@ -74,134 +92,171 @@
                     <div class="divider"></div>
                 </div>
 
-                <div class="team-category">
-                    <h3>Pimpinan & Pendeta (Clergy)</h3>
-                    <div class="team-grid">
-                        <div class="member-card highlight">
-                            <div class="member-info">
-                                <h4>Pdt. David Simarmata, M.Th</h4>
-                                <span class="role">Ephorus dan Pengurus HKBPR</span>
+                <!-- Kontainer Utama Kategori Tim/Pelayan -->
+                <div id="team-categories-container">
+                    
+                    <div class="team-category" data-category-id="clergy">
+                        <h3>Pimpinan & Pendeta (Clergy)</h3>
+                        <div class="team-grid">
+                            <div class="member-card highlight">
+                                <div class="member-info">
+                                    <h4>Pdt. David Simarmata, M.Th</h4>
+                                    <span class="role">Ephorus dan Pengurus HKBPR</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="member-card">
-                            <div class="member-info">
-                                <h4>Pdt. Henry Auden Azen Mountbatten Crosby M.Th, S.Fil., S.S, S.Psi.</h4>
-                                <span class="role">Founder RCC dan Pendeta</span>
+                            <div class="member-card">
+                                <div class="member-info">
+                                    <h4>Pdt. Henry Auden Azen Mountbatten Crosby M.Th, S.Fil., S.S, S.Psi.</h4>
+                                    <span class="role">Founder RCC dan Pendeta</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="member-card">
-                            <div class="member-info">
-                                <h4>Pdt. Nihon Sinaga</h4>
-                                <span class="role">Pendeta dan Pengembang Website HKBPR</span>
+                            <div class="member-card">
+                                <div class="member-info">
+                                    <h4>Pdt. Nihon Sinaga</h4>
+                                    <span class="role">Pendeta dan Pengembang Website HKBPR</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="member-card">
-                            <div class="member-info">
-                                <h4>Pdt. Frederick Matthew</h4>
-                                <span class="role">Pendeta</span>
+                            <div class="member-card">
+                                <div class="member-info">
+                                    <h4>Pdt. Frederick Matthew</h4>
+                                    <span class="role">Pendeta</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="member-card">
-                            <div class="member-info">
-                                <h4>Pdt. Domi Silalahi</h4>
-                                <span class="role">Pendeta</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="team-category">
-                    <h3>Majelis Tahbisan (Sintua & Diakones)</h3>
-                    <div class="team-grid">
-                        <div class="member-card highlight">
-                            <div class="member-info">
-                                <h4>St. Raymond Rajagukguk</h4>
-                                <span class="role">Developer dan Sintua</span>
-                            </div>
-                        </div>
-                        <div class="member-card highlight">
-                            <div class="member-info">
-                                <h4>St. Rendy Siagian</h4>
-                                <span class="role">Sintua, Pemimpin Cyber Security & Tim Pengembang Website</span>
-                            </div>
-                        </div>
-                        <div class="member-card highlight">
-                            <div class="member-info">
-                                <h4>St. Abraham Purba</h4>
-                                <span class="role">Sintua & Ketua Tim Disiplin</span>
-                            </div>
-                        </div>
-                        <div class="member-card">
-                            <div class="member-info">
-                                <h4>St. Rendy Adicipto</h4>
-                                <span class="role">Sintua dan Secretariat Huria</span>
-                            </div>
-                        </div>
-                        <div class="member-card">
-                            <div class="member-info">
-                                <h4>St. Morieno Hutagalung</h4>
-                                <span class="role">Sintua</span>
-                            </div>
-                        </div>
-                        <div class="member-card">
-                            <div class="member-info">
-                                <h4>St. Heber Pasaribu</h4>
-                                <span class="role">Sintua</span>
-                            </div>
-                        </div>
-                        <div class="member-card">
-                            <div class="member-info">
-                                <h4>Diak. Elsa Nababan</h4>
-                                <span class="role">Diakones</span>
+                            <div class="member-card">
+                                <div class="member-info">
+                                    <h4>Pdt. Domi Silalahi</h4>
+                                    <span class="role">Pendeta</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="team-category">
-                    <h3>Calon Pelayan (Candidacy)</h3>
-                    <div class="team-grid">
-                        <div class="member-card candidate">
-                            <div class="member-info">
-                                <h4>CPdt. Eufratha Sihaloho S.Th</h4>
-                                <span class="role">Calon Pendeta</span>
+                    <div class="team-category" data-category-id="majelis">
+                        <h3>Majelis Tahbisan (Sintua & Diakones)</h3>
+                        <div class="team-grid">
+                            <div class="member-card highlight">
+                                <div class="member-info">
+                                    <h4>St. Raymond Rajagukguk</h4>
+                                    <span class="role">Developer dan Sintua</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="member-card candidate">
-                            <div class="member-info">
-                                <h4>CPdt. Dr. Joel Alfian Sitinjak</h4>
-                                <span class="role">Calon Pendeta</span>
+                            <div class="member-card highlight">
+                                <div class="member-info">
+                                    <h4>St. Rendy Siagian</h4>
+                                    <span class="role">Sintua, Pemimpin Cyber Security & Tim Pengembang Website</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="member-card candidate">
-                            <div class="member-info">
-                                <h4>CPdt. Reinhard Situmorang</h4>
-                                <span class="role">Calon Pendeta</span>
+                            <div class="member-card highlight">
+                                <div class="member-info">
+                                    <h4>St. Abraham Purba</h4>
+                                    <span class="role">Sintua & Ketua Tim Disiplin</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="member-card candidate">
-                            <div class="member-info">
-                                <h4>Cst. Nonie Tambunan</h4>
-                                <span class="role">Calon Sintua</span>
+                            <div class="member-card">
+                                <div class="member-info">
+                                    <h4>St. Rendy Adicipto</h4>
+                                    <span class="role">Sintua dan Secretariat Huria</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="member-card candidate">
-                            <div class="member-info">
-                                <h4>CGr. Andra Nichole Sianturi</h4>
-                                <span class="role">Calon Guru Huria</span>
+                            <div class="member-card">
+                                <div class="member-info">
+                                    <h4>St. Morieno Hutagalung</h4>
+                                    <span class="role">Sintua</span>
+                                </div>
+                            </div>
+                            <div class="member-card">
+                                <div class="member-info">
+                                    <h4>St. Heber Pasaribu</h4>
+                                    <span class="role">Sintua</span>
+                                </div>
+                            </div>
+                            <div class="member-card">
+                                <div class="member-info">
+                                    <h4>Diak. Elsa Nababan</h4>
+                                    <span class="role">Diakones</span>
+                                </div>
                             </div>
                         </div>
                     </div>
+
+                    <div class="team-category" data-category-id="candidacy">
+                        <h3>Calon Pelayan (Candidacy)</h3>
+                        <div class="team-grid">
+                            <div class="member-card candidate">
+                                <div class="member-info">
+                                    <h4>CPdt. Eufratha Sihaloho S.Th</h4>
+                                    <span class="role">Calon Pendeta</span>
+                                </div>
+                            </div>
+                            <div class="member-card candidate">
+                                <div class="member-info">
+                                    <h4>CPdt. Dr. Joel Alfian Sitinjak</h4>
+                                    <span class="role">Calon Pendeta</span>
+                                </div>
+                            </div>
+                            <div class="member-card candidate">
+                                <div class="member-info">
+                                    <h4>CPdt. Reinhard Situmorang</h4>
+                                    <span class="role">Calon Pendeta</span>
+                                </div>
+                            </div>
+                            <div class="member-card candidate">
+                                <div class="member-info">
+                                    <h4>Cst. Nonie Tambunan</h4>
+                                    <span class="role">Calon Sintua</span>
+                                </div>
+                            </div>
+                            <div class="member-card candidate">
+                                <div class="member-info">
+                                    <h4>CGr. Andra Nichole Sianturi</h4>
+                                    <span class="role">Calon Guru Huria</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="team-category" data-category-id="laity">
+                        <h3>Saudara & Jemaat (Laity)</h3>
+                        <div class="team-grid">
+                            <div class="member-card laity">
+                                <div class="member-info">
+                                    <h4>Lucas VL. Nababan, D.Min</h4>
+                                    <span class="role">Saudara / Saudagar</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
-                <div class="team-category">
-                    <h3>Saudara & Jemaat (Laity)</h3>
-                    <div class="team-grid">
-                        <div class="member-card laity">
-                            <div class="member-info">
-                                <h4>Lucas VL. Nababan, D.Min</h4>
-                                <span class="role">Saudara / Saudagar</span>
-                            </div>
+                <!-- Panel Kontrol Developer (Tersembunyi secara bawaan) -->
+                <div id="developer-panel" class="dev-panel hidden">
+                    <div class="dev-panel-header">
+                        <h3>🛠️ Developer Control Panel (Mode Edit Aktif)</h3>
+                        <button id="btn-logout" class="btn-logout">Logout</button>
+                    </div>
+                    
+                    <div class="dev-grid">
+                        <!-- Tambah Kategori -->
+                        <div class="dev-box">
+                            <h4>1. Tambah Kategori Baru</h4>
+                            <input type="text" id="new-cat-title" placeholder="Nama Kategori Baru...">
+                            <button id="btn-add-category" class="btn-admin">Buat Kategori</button>
+                        </div>
+
+                        <!-- Tambah Anggota -->
+                        <div class="dev-box">
+                            <h4>2. Tambah Anggota Ke Kategori</h4>
+                            <select id="select-category"></select>
+                            <input type="text" id="new-mem-name" placeholder="Nama Lengkap & Gelar...">
+                            <input type="text" id="new-mem-role" placeholder="Jabatan/Peran...">
+                            <select id="select-mem-style">
+                                <option value="">Standar (Putih/Biasa)</option>
+                                <option value="highlight">Highlight (Kuning Emas)</option>
+                                <option value="candidate">Candidate (Kuning Terang)</option>
+                                <option value="laity">Laity (Abu-abu)</option>
+                            </select>
+                            <button id="btn-add-member" class="btn-admin">Tambah Anggota</button>
                         </div>
                     </div>
                 </div>
