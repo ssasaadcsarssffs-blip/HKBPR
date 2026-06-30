@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (loadingScreen) {
             loadingScreen.classList.add('fade-out');
         }
-    }, 2000);
+    }, 1500);
 
     var devModal = document.getElementById('login-modal');
     var btnLoginTrigger = document.getElementById('btn-login-trigger');
@@ -72,6 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function renderDOM() {
+        if (!containerCategories) return; 
         containerCategories.innerHTML = '';
         
         currentData.forEach(function(cat) {
@@ -141,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function updateCategorySelect() {
-        if(!selectCategory) return;
+        if (!selectCategory) return;
         selectCategory.innerHTML = '';
         currentData.forEach(function(cat) {
             var opt = document.createElement('option');
@@ -153,33 +154,33 @@ document.addEventListener('DOMContentLoaded', function() {
 
     renderDOM();
 
-    if(btnLoginTrigger) {
+    if (btnLoginTrigger && devModal) {
         btnLoginTrigger.addEventListener('click', function() {
             devModal.style.display = 'flex';
         });
     }
 
-    if(closeModal) {
+    if (closeModal && devModal) {
         closeModal.addEventListener('click', function() {
             devModal.style.display = 'none';
         });
     }
 
     window.addEventListener('click', function(e) {
-        if (e.target == devModal) { devModal.style.display = 'none'; }
+        if (devModal && e.target == devModal) { devModal.style.display = 'none'; }
     });
 
-    if(btnSubmitLogin) {
+    if (btnSubmitLogin) {
         btnSubmitLogin.addEventListener('click', function() {
             var userInp = document.querySelector('#login-modal input[id="username"]').value.trim();
             var passInp = document.querySelector('#login-modal input[id="password"]').value.trim();
 
             if (userInp === 'DeveloperHKBPR' && passInp === 'DevHKBPRwebsite') {
                 alert('LOGIN BERHASIL! Fitur Auto-Save Aktif.');
-                devModal.style.display = 'none';
+                if (devModal) devModal.style.display = 'none';
                 isDevMode = true;
-                devPanel.classList.remove('hidden');
-                btnLoginTrigger.textContent = '🛠️ Admin Active';
+                if (devPanel) devPanel.classList.remove('hidden');
+                if (btnLoginTrigger) btnLoginTrigger.textContent = '🛠️ Admin Active';
                 
                 renderDOM();
                 updateCategorySelect();
@@ -189,14 +190,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    if(btnLogout) {
+    if (btnLogout) {
         btnLogout.addEventListener('click', function() {
             alert('Mode Edit Dimatikan.');
             window.location.reload();
         });
     }
 
-    if(btnAddCategory) {
+    if (btnAddCategory) {
         btnAddCategory.addEventListener('click', function() {
             var titleInput = document.getElementById('new-cat-title').value.trim();
             if (!titleInput) { alert('Nama kategori wajib diisi!'); return; }
@@ -217,7 +218,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    if(btnAddMember) {
+    if (btnAddMember) {
         btnAddMember.addEventListener('click', function() {
             var targetCatId = selectCategory.value;
             var nameInput = document.getElementById('new-mem-name').value.trim();
@@ -243,4 +244,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
-
