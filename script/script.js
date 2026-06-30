@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', function() {
     var selectCategory = document.getElementById('select-category');
     var btnAddCategory = document.getElementById('btn-add-category');
     var btnAddMember = document.getElementById('btn-add-member');
-    var btnCommitChanges = document.getElementById('btn-commit-changes');
 
     var isDevMode = false;
 
@@ -68,6 +67,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var currentData = JSON.parse(localStorage.getItem('hkbpr_team_data')) || defaultData;
 
+    function autoSaveData() {
+        localStorage.setItem('hkbpr_team_data', JSON.stringify(currentData));
+    }
+
     function renderDOM() {
         containerCategories.innerHTML = '';
         
@@ -84,10 +87,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 delCatBtn.className = 'delete-cat-btn-active';
                 delCatBtn.textContent = 'Hapus Kategori ❌';
                 delCatBtn.style.marginLeft = '15px';
-                delCatBtn.style.cursor = 'pointer';
                 delCatBtn.addEventListener('click', function() {
-                    if (confirm('Hapus seluruh kategori "' + cat.title + '" beserta seluruh isinya?')) {
+                    if (confirm('Hapus seluruh kategori "' + cat.title + '"?')) {
                         currentData = currentData.filter(item => item.id !== cat.id);
+                        autoSaveData();
                         renderDOM();
                         updateCategorySelect();
                     }
@@ -120,9 +123,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     var delBtn = document.createElement('button');
                     delBtn.className = 'delete-btn-active';
                     delBtn.textContent = 'Hapus Anggota ❌';
-                    delBtn.style.cursor = 'pointer';
                     delBtn.addEventListener('click', function() {
                         cat.members.splice(mIdx, 1);
+                        autoSaveData();
                         renderDOM();
                     });
                     card.appendChild(delBtn);
@@ -138,6 +141,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function updateCategorySelect() {
+        if(!selectCategory) return;
         selectCategory.innerHTML = '';
         currentData.forEach(function(cat) {
             var opt = document.createElement('option');
@@ -149,95 +153,94 @@ document.addEventListener('DOMContentLoaded', function() {
 
     renderDOM();
 
-    btnLoginTrigger.addEventListener('click', function() {
-        devModal.style.display = 'flex';
-    });
+    if(btnLoginTrigger) {
+        btnLoginTrigger.addEventListener('click', function() {
+            devModal.style.display = 'flex';
+        });
+    }
 
-    closeModal.addEventListener('click', function() {
-        devModal.style.display = 'none';
-    });
+    if(closeModal) {
+        closeModal.addEventListener('click', function() {
+            devModal.style.display = 'none';
+        });
+    }
 
     window.addEventListener('click', function(e) {
         if (e.target == devModal) { devModal.style.display = 'none'; }
     });
 
-    btnSubmitLogin.addEventListener('click', function() {
-        var userInp = document.querySelector('#login-modal input[id="username"]').value.trim();
-        var passInp = document.querySelector('#login-modal input[id="password"]').value.trim();
+    if(btnSubmitLogin) {
+        btnSubmitLogin.addEventListener('click', function() {
+            var userInp = document.querySelector('#login-modal input[id="username"]').value.trim();
+            var passInp = document.querySelector('#login-modal input[id="password"]').value.trim();
 
-        alert(
-            "Verifikasi Masuk:\n" +
-            "Username = [" + userInp + "]\n" +
-            "Password = [" + passInp + "]"
-        );
+            if (userInp === 'DeveloperHKBPR' && passInp === 'DevHKBPRwebsite') {
+                alert('LOGIN BERHASIL! Fitur Auto-Save Aktif.');
+                devModal.style.display = 'none';
+                isDevMode = true;
+                devPanel.classList.remove('hidden');
+                btnLoginTrigger.textContent = '🛠️ Admin Active';
+                
+                renderDOM();
+                updateCategorySelect();
+            } else {
+                alert('Username atau Password Pengembang Salah!');
+            }
+        });
+    }
 
-        if (userInp === 'DeveloperHKBPR' && passInp === 'DevHKBPRwebsite') {
-            alert('LOGIN BERHASIL! Selamat datang di editor dinamis.');
-            devModal.style.display = 'none';
-            isDevMode = true;
-            devPanel.classList.remove('hidden');
-            btnLoginTrigger.textContent = '🛠️ Admin Active';
+    if(btnLogout) {
+        btnLogout.addEventListener('click', function() {
+            alert('Mode Edit Dimatikan.');
+            window.location.reload();
+        });
+    }
+
+    if(btnAddCategory) {
+        btnAddCategory.addEventListener('click', function() {
+            var titleInput = document.getElementById('new-cat-title').value.trim();
+            if (!titleInput) { alert('Nama kategori wajib diisi!'); return; }
+
+            var safeId = titleInput.replace(/\s+/g, '-').toLowerCase() + '-' + Date.now();
             
-            window.scrollTo({
-                top: devPanel.offsetTop - 100,
-                behavior: 'smooth'
+            currentData.push({
+                id: safeId,
+                title: titleInput,
+                members: []
             });
 
+            document.getElementById('new-cat-title').value = '';
+            autoSaveData();
             renderDOM();
             updateCategorySelect();
-        } else {
-            alert('Username atau Password Pengembang Salah!');
-        }
-    });
-
-    btnLogout.addEventListener('click', function() {
-        alert('Mode Edit Dimatikan.');
-        window.location.reload();
-    });
-
-    btnAddCategory.addEventListener('click', function() {
-        var titleInput = document.getElementById('new-cat-title').value.trim();
-        if (!titleInput) { alert('Nama kategori wajib diisi!'); return; }
-
-        var safeId = titleInput.replace(/\s+/g, '-').toLowerCase() + '-' + Date.now();
-        
-        currentData.push({
-            id: safeId,
-            title: titleInput,
-            members: []
+            alert('Kategori baru berhasil ditambahkan & Otomatis Ter-commit!');
         });
+    }
 
-        document.getElementById('new-cat-title').value = '';
-        renderDOM();
-        updateCategorySelect();
-        alert('Kategori ditambahkan ke antrean perubahan.');
-    });
+    if(btnAddMember) {
+        btnAddMember.addEventListener('click', function() {
+            var targetCatId = selectCategory.value;
+            var nameInput = document.getElementById('new-mem-name').value.trim();
+            var roleInput = document.getElementById('new-mem-role').value.trim();
+            var styleInput = document.getElementById('select-mem-style').value;
 
-    btnAddMember.addEventListener('click', function() {
-        var targetCatId = selectCategory.value;
-        var nameInput = document.getElementById('new-mem-name').value.trim();
-        var roleInput = document.getElementById('new-mem-role').value.trim();
-        var styleInput = document.getElementById('select-mem-style').value;
+            if (!nameInput || !roleInput) { alert('Nama dan Jabatan wajib diisi!'); return; }
 
-        if (!nameInput || !roleInput) { alert('Nama dan Jabatan wajib diisi!'); return; }
+            var targetCat = currentData.find(item => item.id === targetCatId);
+            if (targetCat) {
+                targetCat.members.push({
+                    name: nameInput,
+                    role: roleInput,
+                    style: styleInput
+                });
 
-        var targetCat = currentData.find(item => item.id === targetCatId);
-        if (targetCat) {
-            targetCat.members.push({
-                name: nameInput,
-                role: roleInput,
-                style: styleInput
-            });
-
-            document.getElementById('new-mem-name').value = '';
-            document.getElementById('new-mem-role').value = '';
-            renderDOM();
-            alert('Anggota berhasil dimasukkan ke antrean perubahan.');
-        }
-    });
-
-    btnCommitChanges.addEventListener('click', function() {
-        localStorage.setItem('hkbpr_team_data', JSON.stringify(currentData));
-        alert('💾 COMMIT BERHASIL! Semua penyesuaian baru Anda dikunci permanen ke dalam memori lokal browser.');
-    });
+                document.getElementById('new-mem-name').value = '';
+                document.getElementById('new-mem-role').value = '';
+                autoSaveData();
+                renderDOM();
+                alert('Anggota baru berhasil ditambahkan & Otomatis Ter-commit!');
+            }
+        });
+    }
 });
+
