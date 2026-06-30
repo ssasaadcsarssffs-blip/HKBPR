@@ -38,18 +38,12 @@ document.addEventListener('DOMContentLoaded', function() {
         var userInp = document.querySelector('#login-modal input[id="username"]').value.trim();
         var passInp = document.querySelector('#login-modal input[id="password"]').value.trim();
 
-        alert(
-            "Membaca DOM Browser:\n" +
-            "Username = [" + userInp + "]\n" +
-            "Password = [" + passInp + "]"
-        );
-
         if (userInp === 'DeveloperHKBPR' && passInp === 'DevHKBPRwebsite') {
             alert('LOGIN BERHASIL! Panel kontrol diaktifkan.');
             devModal.style.display = 'none';
             activateDeveloperMode();
         } else {
-            alert('LOGIN GAGAL! Periksa kembali kesesuaian huruf kapital.');
+            alert('LOGIN GAGAL! Periksa kembali username dan password Anda.');
         }
     });
 
@@ -66,6 +60,12 @@ document.addEventListener('DOMContentLoaded', function() {
     function activateDeveloperMode() {
         devPanel.classList.remove('hidden');
         btnLoginTrigger.textContent = '🛠️ Admin Active';
+        
+        window.scrollTo({
+            top: devPanel.offsetTop - 100,
+            behavior: 'smooth'
+        });
+
         updateCategorySelect();
         showDeleteButtons();
     }
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!cat.getAttribute('data-category-id')) {
                 cat.setAttribute('data-category-id', id);
             }
-            var title = cat.querySelector('h3').textContent.replace(' ❌', '');
+            var title = cat.querySelector('h3').textContent.replace(' ❌', '').replace(' Hapus Kategori ❌', '');
             var opt = document.createElement('option');
             opt.value = id;
             opt.textContent = title;
