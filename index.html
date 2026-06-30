@@ -3,282 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HKBPR - Huria Kristen Batak Protestan Roblox</title>
+    <title>Beranda - HKBPR</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
     <div id="loading-screen">
-        <div class="loading-content">
-            <img src="logo.jpeg" alt="Logo HKBPR" class="loading-logo">
-            <div class="spinner"></div>
-            <p class="loading-text">Preparing for HKBPR website...</p>
-        </div>
-    </div>
-
-    <div id="login-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h3>Login Developer</h3>
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" placeholder="Masukkan username">
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" placeholder="Masukkan password">
-            </div>
-            <button id="submit-login" class="btn-primary">Masuk</button>
-        </div>
+        <div class="spinner"></div>
+        <p>Memuat Halaman Utama HKBPR...</p>
     </div>
 
     <header>
-        <div class="header-container">
-            <div class="logo-area">
-                <img src="logo.jpeg" alt="Logo HKBPR" class="nav-logo">
-                <div class="logo-text">
-                    <h1>HKBPR</h1>
-                    <p>Huria Kristen Batak Protestan Roblox</p>
-                </div>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#home" class="active">Beranda</a></li>
-                    <li><a href="#tentang">Tentang Kami</a></li>
-                    <li><a href="#pengurus">Pelayan & Pengurus</a></li>
-                    <li><a href="#kontak">Gabung Komunitas</a></li>
-                    <li><button id="btn-login-trigger" class="btn-dev-nav">Dev Login</button></li>
-                </ul>
-            </nav>
+        <div class="logo-area">
+            <h2>HKBPR</h2>
         </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Beranda</a></li>
+                <li><a href="#">Tentang Kami</a></li>
+                <li><a href="pengurus.html">Pelayan & Pengurus</a></li>
+                <li><a href="#">Gabung Komunitas</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <section id="home" class="hero-section">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <span class="hero-subtitle">Selamat Datang di Website Resmi</span>
-            <h2 class="hero-title">Komunitas Suci HKBPR</h2>
-            <p class="hero-description">Berakar, Dibangun, dan Berdiri Teguh dalam Iman. Wadah Persekutuan Jemaat Kristen Batak Protestan di Dunia Virtual Roblox.</p>
-            <a href="#tentang" class="btn-primary">Pelajari Selengkapnya</a>
-        </div>
-    </section>
-
-    <main>
-        <section id="tentang" class="section-padding">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Mengenal HKBPR</h2>
-                    <div class="divider"></div>
-                </div>
-                <div class="about-grid">
-                    <div class="about-card">
-                        <h3>Visi Komunitas</h3>
-                        <p>Menjadi komunitas gerejawi virtual yang kudus, inklusif, dan misioner di platform Roblox, memelihara identitas iman Kristen dan warisan teologis serta budaya Batak di era digital.</p>
-                    </div>
-                    <div class="about-card">
-                        <h3>Misi Pelayanan</h3>
-                        <p>Menyelenggarakan persekutuan yang sehat, pengajaran firman yang murni, serta membangun benteng pertahanan iman dan keamanan siber bagi seluruh jemaat virtual.</p>
-                    </div>
-                </div>
+    <main class="content-wrapper">
+        <section class="hero-section" style="text-align: center; padding: 60px 20px; background: #f8f9fa; border-radius: 8px; margin-bottom: 30px;">
+            <h1>Selamat Datang di HKBPR</h1>
+            <p style="font-size: 1.2rem; color: #555; max-width: 800px; margin: 15px auto;">
+                Huria Kristen Batak Protestan Reformasi. Wadah persekutuan suci, ruang diskusi iman, dan koordinasi jemaat secara virtual dan nyata.
+            </p>
+            <div style="margin-top: 25px;">
+                <a href="pengurus.html" style="background: #1d3557; color: white; padding: 12px 24px; text-decoration: none; font-weight: bold; border-radius: 5px; display: inline-block;">Lihat Susunan Pengurus 👥</a>
             </div>
         </section>
 
-        <section id="pengurus" class="section-padding alt-bg">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Daftar Pelayan & Pengurus</h2>
-                    <div class="divider"></div>
-                </div>
-
-                <div id="team-categories-container">
-                    
-                    <div class="team-category" data-category-id="clergy">
-                        <h3>Pimpinan & Pendeta (Clergy)</h3>
-                        <div class="team-grid">
-                            <div class="member-card highlight">
-                                <div class="member-info">
-                                    <h4>Pdt. David Simarmata, M.Th</h4>
-                                    <span class="role">Ephorus dan Pengurus HKBPR</span>
-                                </div>
-                            </div>
-                            <div class="member-card">
-                                <div class="member-info">
-                                    <h4>Pdt. Henry Auden Azen Mountbatten Crosby M.Th, S.Fil., S.S, S.Psi.</h4>
-                                    <span class="role">Founder RCC dan Pendeta</span>
-                                </div>
-                            </div>
-                            <div class="member-card">
-                                <div class="member-info">
-                                    <h4>Pdt. Nihon Sinaga</h4>
-                                    <span class="role">Pendeta dan Pengembang Website HKBPR</span>
-                                </div>
-                            </div>
-                            <div class="member-card">
-                                <div class="member-info">
-                                    <h4>Pdt. Frederick Matthew</h4>
-                                    <span class="role">Pendeta</span>
-                                </div>
-                            </div>
-                            <div class="member-card">
-                                <div class="member-info">
-                                    <h4>Pdt. Domi Silalahi</h4>
-                                    <span class="role">Pendeta</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="team-category" data-category-id="majelis">
-                        <h3>Majelis Tahbisan (Sintua & Diakones)</h3>
-                        <div class="team-grid">
-                            <div class="member-card highlight">
-                                <div class="member-info">
-                                    <h4>St. Raymond Rajagukguk</h4>
-                                    <span class="role">Developer dan Sintua</span>
-                                </div>
-                            </div>
-                            <div class="member-card highlight">
-                                <div class="member-info">
-                                    <h4>St. Rendy Siagian</h4>
-                                    <span class="role">Sintua, Pemimpin Cyber Security & Tim Pengembang Website</span>
-                                </div>
-                            </div>
-                            <div class="member-card highlight">
-                                <div class="member-info">
-                                    <h4>St. Abraham Purba</h4>
-                                    <span class="role">Sintua & Ketua Tim Disiplin</span>
-                                </div>
-                            </div>
-                            <div class="member-card">
-                                <div class="member-info">
-                                    <h4>St. Rendy Adicipto</h4>
-                                    <span class="role">Sintua dan Secretariat Huria</span>
-                                </div>
-                            </div>
-                            <div class="member-card">
-                                <div class="member-info">
-                                    <h4>St. Morieno Hutagalung</h4>
-                                    <span class="role">Sintua</span>
-                                </div>
-                            </div>
-                            <div class="member-card">
-                                <div class="member-info">
-                                    <h4>St. Heber Pasaribu</h4>
-                                    <span class="role">Sintua</span>
-                                </div>
-                            </div>
-                            <div class="member-card">
-                                <div class="member-info">
-                                    <h4>Diak. Elsa Nababan</h4>
-                                    <span class="role">Diakones</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="team-category" data-category-id="candidacy">
-                        <h3>Calon Pelayan (Candidacy)</h3>
-                        <div class="team-grid">
-                            <div class="member-card candidate">
-                                <div class="member-info">
-                                    <h4>CPdt. Eufratha Sihaloho S.Th</h4>
-                                    <span class="role">Calon Pendeta</span>
-                                </div>
-                            </div>
-                            <div class="member-card candidate">
-                                <div class="member-info">
-                                    <h4>CPdt. Dr. Joel Alfian Sitinjak</h4>
-                                    <span class="role">Calon Pendeta</span>
-                                </div>
-                            </div>
-                            <div class="member-card candidate">
-                                <div class="member-info">
-                                    <h4>CPdt. Reinhard Situmorang</h4>
-                                    <span class="role">Calon Pendeta</span>
-                                </div>
-                            </div>
-                            <div class="member-card candidate">
-                                <div class="member-info">
-                                    <h4>Cst. Nonie Tambunan</h4>
-                                    <span class="role">Calon Sintua</span>
-                                </div>
-                            </div>
-                            <div class="member-card candidate">
-                                <div class="member-info">
-                                    <h4>CGr. Andra Nichole Sianturi</h4>
-                                    <span class="role">Calon Guru Huria</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="team-category" data-category-id="laity">
-                        <h3>Saudara & Jemaat (Laity)</h3>
-                        <div class="team-grid">
-                            <div class="member-card laity">
-                                <div class="member-info">
-                                    <h4>Lucas VL. Nababan, D.Min</h4>
-                                    <span class="role">Saudara / Saudagar</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div id="developer-panel" class="dev-panel hidden">
-                    <div class="dev-panel-header">
-                        <h3>🛠️ Developer Control Panel (Mode Edit Aktif)</h3>
-                        <button id="btn-logout" class="btn-logout">Logout</button>
-                    </div>
-                    
-                    <div class="dev-grid">
-                        <div class="dev-box">
-                            <h4>1. Tambah Kategori Baru</h4>
-                            <input type="text" id="new-cat-title" placeholder="Nama Kategori Baru...">
-                            <button id="btn-add-category" class="btn-admin">Buat Kategori</button>
-                        </div>
-
-                        <div class="dev-box">
-                            <h4>2. Tambah Anggota Ke Kategori</h4>
-                            <select id="select-category"></select>
-                            <input type="text" id="new-mem-name" placeholder="Nama Lengkap & Gelar...">
-                            <input type="text" id="new-mem-role" placeholder="Jabatan/Peran...">
-                            <select id="select-mem-style">
-                                <option value="">Standar (Putih/Biasa)</option>
-                                <option value="highlight">Highlight (Kuning Emas)</option>
-                                <option value="candidate">Candidate (Kuning Terang)</option>
-                                <option value="laity">Laity (Abu-abu)</option>
-                            </select>
-                            <button id="btn-add-member" class="btn-admin">Tambah Anggota</button>
-                        </div>
-                    </div>
-                </div>
-
+        <section class="info-grid" style="display: flex; gap: 20px; margin-bottom: 40px;">
+            <div class="info-box" style="flex: 1; border: 1px solid #ddd; padding: 20px; border-radius: 6px;">
+                <h3>Visi & Misi</h3>
+                <p>Membangun iman jemaat yang berakar kuat pada teologi reformasi serta bersekutu dalam kasih persaudaraan.</p>
             </div>
-        </section>
-
-        <section id="kontak" class="section-padding">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Gabung ke Komunitas HKBPR</h2>
-                    <div class="divider"></div>
-                </div>
-                <div class="contact-box">
-                    <p>Mari bergabung bersama dalam persekutuan suci, ruang diskusi iman, dan koordinasi jemaat virtual melalui server Discord resmi kami.</p>
-                    <a href="https://discord.gg/R8r6YPJjn" target="_blank" class="btn-secondary">Gabung ke Discord</a>
-                </div>
+            <div class="info-box" style="flex: 1; border: 1px solid #ddd; padding: 20px; border-radius: 6px;">
+                <h3>Kegiatan Rutin</h3>
+                <p>Saksikan dan ikuti jadwal persekutuan, koordinasi cyber, serta ruang diskusi iman berkala komunitas kami.</p>
             </div>
         </section>
     </main>
 
     <footer>
-        <div class="container footer-content">
+        <div style="text-align: center; padding: 20px; background: #1d3557; color: white; font-size: 0.9rem;">
             <p>&copy; 2026 HKBPR - Huria Kristen Batak Protestan Roblox. Semua Hak Dilindungi.</p>
-            <p class="tech-credit">Situs ini dilindungi oleh Divisi Cyber Security HKBPR.</p>
         </div>
     </footer>
 
-    <script src="script/script.js"></script>
+    <script src="script/script.js?v=101"></script>
 </body>
 </html>
