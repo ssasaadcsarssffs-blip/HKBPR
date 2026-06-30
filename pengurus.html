@@ -4,85 +4,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pelayan & Pengurus - HKBPR</title>
-    <link rel="stylesheet" href="css/style.css?v=102">
+    <link rel="stylesheet" href="css/style.css?v=120">
 </head>
-<body>
+<body style="background-color: #1d3557; color: white; margin: 0; padding: 0; font-family: sans-serif;">
 
     <div id="loading-screen">
         <div class="spinner"></div>
         <p>Memuat Struktur Pengurus...</p>
     </div>
 
-    <header>
-        <div class="logo-area">
-            <h2>HKBPR</h2>
+    <header style="background: #0f1c2e; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.3);">
+        <div class="logo-area" style="display: flex; align-items: center; gap: 12px;">
+            <img src="logo.jpeg" alt="Logo HKBPR" style="height: 40px; width: 40px; border-radius: 50%; object-fit: cover; border: 2px solid #43cae6;">
+            <h2 style="margin: 0; color: white; font-size: 1.5rem;">HKBPR</h2>
         </div>
         <nav>
-            <ul>
-                <li><a href="index.html">Beranda</a></li>
-                <li><a href="pengurus.html" class="active">Pelayan & Pengurus</a></li>
-                <li><button id="btn-login-trigger" class="btn-dev-nav">Dev Login</button></li>
+            <ul style="list-style: none; display: flex; gap: 20px; margin: 0; padding: 0; align-items: center;">
+                <li><a href="index.html" style="color: white; text-decoration: none;">Beranda</a></li>
+                <li><a href="pengurus.html" style="color: #43cae6; text-decoration: none; font-weight: bold;">Pelayan & Pengurus</a></li>
+                <li><button id="btn-login-trigger" style="background: #43cae6; color: #0f1c2e; border: none; padding: 6px 12px; font-weight: bold; border-radius: 4px; cursor: pointer;">Dev Login</button></li>
             </ul>
         </nav>
     </header>
 
-    <main class="content-wrapper">
-        <section class="page-title-section">
-            <h1>Daftar Pelayan & Pengurus Jemaat</h1>
-            <p>Struktur kepengurusan resmi pelayanan Huria Kristen Batak Protestan Reformasi.</p>
+    <main class="content-wrapper" style="max-width: 1000px; margin: 30px auto; padding: 0 20px;">
+        <section class="page-title-section" style="text-align: center; margin-bottom: 40px;">
+            <h1 style="color: white; font-size: 2.2rem; margin-bottom: 10px;">Daftar Pelayan & Pengurus Jemaat</h1>
+            <p style="color: #f1faee; opacity: 0.9;">Struktur kepengurusan resmi pelayanan Huria Kristen Batak Protestan Reformasi.</p>
         </section>
 
         <div id="team-categories-container"></div>
 
-        <div id="developer-panel" class="dev-panel hidden">
-            <div class="panel-header">
-                <h3>🛠️ Developer Control Panel (Fitur Auto-Save Aktif)</h3>
-                <button id="btn-logout" class="btn-admin-danger" style="background:#ff4d4d; color:white; border:none; padding:5px 10px; border-radius:4px; cursor:pointer;">Keluar Mode Edit</button>
+        <div id="developer-panel" class="dev-panel hidden" style="background: #0f1c2e; padding: 20px; border-radius: 8px; margin-top: 40px; border: 1px solid #43cae6;">
+            <div class="panel-header" style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; padding-bottom: 10px;">
+                <h3 style="color: white; margin: 0;">🛠️ Developer Control Panel (Auto-Save Aktif)</h3>
+                <button id="btn-logout" class="btn-admin-danger" style="background:#ff4d4d; color:white; border:none; padding:6px 12px; border-radius:4px; cursor:pointer; font-weight:bold;">Keluar Mode Edit</button>
             </div>
             
-            <div class="panel-grid" style="display: flex; gap: 20px; margin-top: 15px;">
-                <div class="panel-box" style="flex: 1; border: 1px solid #ddd; padding: 15px; border-radius: 4px;">
-                    <h4>1. Tambah Kategori Baru</h4>
-                    <input type="text" id="new-cat-title" placeholder="Nama Kategori Baru..." style="width: 100%; padding: 8px; margin: 10px 0;">
-                    <button id="btn-add-category" style="width: 100%; background: #1d3557; color: white; padding: 8px; border: none; cursor: pointer;">Buat Kategori</button>
+            <div class="panel-grid" style="display: flex; gap: 20px; margin-top: 15px; flex-wrap: wrap;">
+                <div class="panel-box" style="flex: 1; min-width: 280px; background: #1d3557; padding: 15px; border-radius: 6px;">
+                    <h4 style="color: white; margin-top: 0;">1. Tambah Kategori Baru</h4>
+                    <input type="text" id="new-cat-title" placeholder="Nama Kategori Baru..." style="width: 100%; padding: 10px; margin: 10px 0; border-radius: 4px; border: none;">
+                    <button id="btn-add-category" style="width: 100%; background: #43cae6; color: #0f1c2e; padding: 10px; border: none; cursor: pointer; font-weight: bold; border-radius: 4px;">Buat Kategori</button>
                 </div>
 
-                <div class="panel-box" style="flex: 1; border: 1px solid #ddd; padding: 15px; border-radius: 4px;">
-                    <h4>2. Tambah Anggota Ke Kategori</h4>
-                    <select id="select-category" style="width: 100%; padding: 8px; margin: 5px 0;"></select>
-                    <input type="text" id="new-mem-name" placeholder="Nama Lengkap & Gelar..." style="width: 100%; padding: 8px; margin: 5px 0;">
-                    <input type="text" id="new-mem-role" placeholder="Jabatan/Peran..." style="width: 100%; padding: 8px; margin: 5px 0;">
-                    <select id="select-mem-style" style="width: 100%; padding: 8px; margin: 5px 0;">
+                <div class="panel-box" style="flex: 1; min-width: 280px; background: #1d3557; padding: 15px; border-radius: 6px;">
+                    <h4 style="color: white; margin-top: 0;">2. Tambah Anggota Ke Kategori</h4>
+                    <select id="select-category" style="width: 100%; padding: 10px; margin: 5px 0; border-radius: 4px;"></select>
+                    <input type="text" id="new-mem-name" placeholder="Nama Lengkap & Gelar..." style="width: 100%; padding: 10px; margin: 5px 0; border-radius: 4px; border: none;">
+                    <input type="text" id="new-mem-role" placeholder="Jabatan/Peran..." style="width: 100%; padding: 10px; margin: 5px 0; border-radius: 4px; border: none;">
+                    <select id="select-mem-style" style="width: 100%; padding: 10px; margin: 5px 0; border-radius: 4px;">
                         <option value="">Standar (Putih/Biasa)</option>
                         <option value="highlight">Highlight Emas (Pimpinan)</option>
                         <option value="candidate">Candidate (Kuning Terang)</option>
                         <option value="laity">Laity (Abu-abu Gelap)</option>
                     </select>
-                    <button id="btn-add-member" style="width: 100%; background: #1d3557; color: white; padding: 8px; border: none; cursor: pointer; margin-top: 5px;">Tambah Anggota</button>
+                    <button id="btn-add-member" style="width: 100%; background: #43cae6; color: #0f1c2e; padding: 10px; border: none; cursor: pointer; margin-top: 10px; font-weight: bold; border-radius: 4px;">Tambah Anggota</button>
                 </div>
-            </div>
-            <div style="margin-top: 15px; background: #e3f2fd; padding: 10px; border-radius: 4px; font-size: 0.85rem; text-align: center; color: #0d47a1;">
-                💡 <strong>Info:</strong> Setiap perubahan data (Tambah/Hapus) otomatis ter-commit permanen tanpa perlu tombol manual.
             </div>
         </div>
     </main>
 
-    <div id="login-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h3>Otentikasi Pengembang</h3>
-            <div class="form-group">
-                <label>Username Developer</label>
-                <input type="text" id="username" placeholder="Masukkan username">
+    <div id="login-modal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); justify-content: center; align-items: center; z-index: 9999;">
+        <div class="modal-content" style="background: #0f1c2e; padding: 30px; border-radius: 8px; width: 90%; max-width: 400px; border: 1px solid #43cae6; position: relative;">
+            <span class="close-modal" style="position: absolute; top: 10px; right: 15px; color: white; font-size: 24px; cursor: pointer;">&times;</span>
+            <h3 style="color: white; margin-top: 0; margin-bottom: 20px;">Otentikasi Pengembang</h3>
+            <div class="form-group" style="margin-bottom: 15px;">
+                <label style="color: white; display: block; margin-bottom: 5px;">Username Developer</label>
+                <input type="text" id="username" placeholder="Masukkan username" style="width: 100%; padding: 10px; border-radius: 4px; border: none;">
             </div>
-            <div class="form-group">
-                <label>Password Developer</label>
-                <input type="password" id="password" placeholder="Masukkan password">
+            <div class="form-group" style="margin-bottom: 20px;">
+                <label style="color: white; display: block; margin-bottom: 5px;">Password Developer</label>
+                <input type="password" id="password" placeholder="Masukkan password" style="width: 100%; padding: 10px; border-radius: 4px; border: none;">
             </div>
-            <button id="submit-login" class="btn-login-submit">Verifikasi Masuk</button>
+            <button id="submit-login" class="btn-login-submit" style="width: 100%; background: #43cae6; color: #0f1c2e; padding: 12px; border: none; font-weight: bold; border-radius: 4px; cursor: pointer;">Verifikasi Masuk</button>
         </div>
     </div>
 
-    <script src="script/script.js?v=102"></script>
+    <script src="script/script.js?v=120"></script>
 </body>
 </html>
