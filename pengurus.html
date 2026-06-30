@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pelayan & Pengurus - HKBPR</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+
+    <div id="loading-screen">
+        <div class="spinner"></div>
+        <p>Memuat Struktur Pengurus...</p>
+    </div>
+
+    <header>
+        <div class="logo-area">
+            <h2>HKBPR</h2>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="tentang.html">Tentang Kami</a></li>
+                <li><a href="pengurus.html" class="active">Pelayan & Pengurus</a></li>
+                <li><a href="kontak.html">Gabung Komunitas</a></li>
+                <li><button id="btn-login-trigger" class="btn-dev-nav">Dev Login</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="content-wrapper">
+        <section class="page-title-section">
+            <h1>Daftar Pelayan & Pengurus Jemaat</h1>
+            <p>Struktur kepengurusan resmi pelayanan Huria Kristen Batak Protestan Reformasi.</p>
+        </section>
+
+        <div id="team-categories-container"></div>
+
+        <div id="developer-panel" class="dev-panel hidden">
+            <div class="panel-header">
+                <h3>🛠️ Developer Control Panel</h3>
+                <button id="btn-logout" class="btn-admin-danger">Keluar Mode Edit</button>
+            </div>
+            
+            <div class="panel-grid">
+                <div class="panel-box">
+                    <h4>Tambah Kategori / Tabel Baru</h4>
+                    <div class="form-group">
+                        <label>Nama Kategori</label>
+                        <input type="text" id="new-cat-title" placeholder="Contoh: Dewan Diakoni">
+                    </div>
+                    <button id="btn-add-category" class="btn-admin">Tambah Kategori</button>
+                </div>
+
+                <div class="panel-box">
+                    <h4>Tambah Nama Pelayan / Anggota</h4>
+                    <div class="form-group">
+                        <label>Pilih Kategori Tujuan</label>
+                        <select id="select-category"></select>
+                    </div>
+                    <div class="form-group">
+                        <label>Nama Lengkap & Gelar</label>
+                        <input type="text" id="new-mem-name" placeholder="Contoh: St. John Doe, S.Th">
+                    </div>
+                    <div class="form-group">
+                        <label>Jabatan / Peran pelayanan</label>
+                        <input type="text" id="new-mem-role" placeholder="Contoh: Sekretaris Jemaat">
+                    </div>
+                    <div class="form-group">
+                        <label>Warna Tema Kartu</label>
+                        <select id="select-mem-style">
+                            <option value="">Putih Standar</option>
+                            <option value="highlight">Highlight Emas (Pimpinan)</option>
+                            <option value="candidate">Candidate (Kuning Terang)</option>
+                            <option value="laity">Laity (Abu-abu Gelap)</option>
+                        </select>
+                    </div>
+                    <button id="btn-add-member" class="btn-admin">Tambah Anggota</button>
+                </div>
+            </div>
+
+            <div class="commit-section">
+                <button id="btn-commit-changes" class="btn-commit">💾 Commit & Terapkan Perubahan</button>
+                <p>*Klik tombol commit di atas untuk mengunci data baru ke dalam database agar tidak hilang saat halaman di-refresh.</p>
+            </div>
+        </div>
+    </main>
+
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>Otentikasi Pengembang</h3>
+            <div class="form-group">
+                <label>Username Developer</label>
+                <input type="text" id="username" placeholder="Masukkan username">
+            </div>
+            <div class="form-group">
+                <label>Password Developer</label>
+                <input type="password" id="password" placeholder="Masukkan password">
+            </div>
+            <button id="submit-login" class="btn-login-submit">Verifikasi Masuk</button>
+        </div>
+    </div>
+
+    <script src="script/script.js?v=101"></script>
+</body>
+</html>
